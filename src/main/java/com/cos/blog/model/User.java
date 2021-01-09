@@ -10,7 +10,6 @@ import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
 
-import org.hibernate.annotations.ColumnDefault;
 import org.hibernate.annotations.CreationTimestamp;
 
 import lombok.AllArgsConstructor;
@@ -30,7 +29,7 @@ public class User {
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	private int id;
 	
-	@Column(nullable = false, length = 30)
+	@Column(nullable = false, length = 200, unique = true)
 	private String username;
 	
 	@Column(nullable = false, length = 100)
@@ -41,6 +40,8 @@ public class User {
 	 
 	@Enumerated(EnumType.STRING)
 	private RoleType role;
+	
+	private String oauth;
 	
 	@CreationTimestamp
 	private Timestamp createDate;
